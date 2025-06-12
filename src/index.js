@@ -9,7 +9,7 @@ app.use(express.json())
 app.use('/', authRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Bienvenido a la API de Prestamos');
+  res.send('Bienvenido a la API de Tokens');
 }
 )
 
