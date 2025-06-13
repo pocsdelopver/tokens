@@ -22,8 +22,8 @@ const options = {
           bearerFormat: 'JWT',
           in: 'header',
           name: 'Authorization'
-        },
-      },
+        }
+      }
     },
     security: [{
       bearerAuth: []

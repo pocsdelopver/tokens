@@ -73,12 +73,6 @@ router.post('/login', AuthController.login)
  *         description: Token no proporcionado
  *       403:
  *         description: Token inválido
- *     x-codeSamples:
- *       - lang: curl
- *         source: |
- *           curl -X GET "http://localhost:8080/validaToken" \
- *           -H "accept: application/json" \
- *           -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
  */
 router.get('/validaToken', authenticateToken, AuthController.getProtectedData)
 
