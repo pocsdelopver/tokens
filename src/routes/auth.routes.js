@@ -7,8 +7,10 @@ const { authenticateToken } = require('../middleware/auth.middleware')
  * @swagger
  * /login:
  *   post:
+ *     tags:
+ *       - Autenticación
  *     summary: Iniciar sesión y obtener token JWT
- *     tags: [Autenticación]
+ *     description: Autentica al usuario y devuelve un token JWT para acceder a recursos protegidos
  *     requestBody:
  *       required: true
  *       content:
@@ -21,10 +23,10 @@ const { authenticateToken } = require('../middleware/auth.middleware')
  *             properties:
  *               username:
  *                 type: string
- *                 description: Nombre de usuario
+ *                 example: admin
  *               password:
  *                 type: string
- *                 description: Contraseña del usuario
+ *                 example: "1234"
  *     responses:
  *       200:
  *         description: Token generado exitosamente
@@ -35,9 +37,27 @@ const { authenticateToken } = require('../middleware/auth.middleware')
  *               properties:
  *                 token:
  *                   type: string
- *                   description: Token JWT
+ *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ"
  *       401:
  *         description: Credenciales inválidas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Credenciales inválidas"
+ *       400:
+ *         description: Datos de entrada inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "El nombre de usuario y la contraseña son requeridos"
  */
 router.post('/login', AuthController.login)
 
